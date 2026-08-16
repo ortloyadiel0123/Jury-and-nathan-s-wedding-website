@@ -56,17 +56,17 @@
   /* ---------- floral corner ornaments ---------- */
   .floral{
     position:absolute;
-    width:min(46vw, 320px);
-    height:min(46vw, 320px);
+    width:min(30vw, 190px);
+    height:min(30vw, 190px);
     z-index:3;
     pointer-events:none;
   }
-  .floral--tr{ top:-38px; right:-28px; }
-  .floral--bl{ bottom:-38px; left:-28px; transform:rotate(180deg); }
+  .floral--tr{ top:-16px; right:-14px; }
+  .floral--bl{ bottom:-34px; left:-20px; transform:rotate(180deg); }
   @media (max-width:560px){
-    .floral{ width:min(58vw, 240px); height:min(58vw, 240px); }
-    .floral--tr{ top:-22px; right:-18px; }
-    .floral--bl{ bottom:-22px; left:-18px; }
+    .floral{ width:min(38vw, 140px); height:min(38vw, 140px); }
+    .floral--tr{ top:-10px; right:-10px; }
+    .floral--bl{ bottom:-24px; left:-14px; }
   }
 
   /* ---------- card ---------- */
@@ -231,10 +231,6 @@
   .guest-block[hidden]{ display:none; }
   .guest-block.collapsed{ max-height:0; opacity:0; margin:0; }
 
-  .meal-list{ display:grid; gap:16px; }
-  .meal-row{ display:grid; gap:8px; }
-  .meal-row .field-label{ margin-bottom:6px; }
-
   .decline-note{ font-style:italic; opacity:.8; }
 
   button.submit{
@@ -327,7 +323,7 @@
   <div class="card-wrap">
    <div class="card-frame">
 
-    <svg class="floral floral--tr" viewBox="-30 -80 230 230" width="230" height="230" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+    <svg class="floral floral--tr" viewBox="-30 -80 230 230" width="190" height="190" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
       <use href="#rsvp-leaf" xlink:href="#rsvp-leaf" transform="translate(165,60) rotate(35)"/>
       <use href="#rsvp-leaf" xlink:href="#rsvp-leaf" transform="translate(128,-18) rotate(75) scale(1.15)"/>
       <use href="#rsvp-leaf" xlink:href="#rsvp-leaf" transform="translate(68,-48) rotate(115)"/>
@@ -338,7 +334,7 @@
       <use href="#rsvp-bud" xlink:href="#rsvp-bud" transform="translate(20,32) rotate(20) scale(1.1)"/>
     </svg>
 
-    <svg class="floral floral--bl" viewBox="-30 -80 230 230" width="230" height="230" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+    <svg class="floral floral--bl" viewBox="-30 -80 230 230" width="190" height="190" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
       <use href="#rsvp-leaf" xlink:href="#rsvp-leaf" transform="translate(165,60) rotate(35)"/>
       <use href="#rsvp-leaf" xlink:href="#rsvp-leaf" transform="translate(128,-18) rotate(75) scale(1.15)"/>
       <use href="#rsvp-leaf" xlink:href="#rsvp-leaf" transform="translate(68,-48) rotate(115)"/>
@@ -392,13 +388,6 @@
           </div>
 
           <div class="field">
-            <span class="field-label">Meal Choice</span>
-            <div class="meal-list" id="mealList">
-              <p class="decline-note" style="margin:0;">Enter the number attending above to choose meals.</p>
-            </div>
-          </div>
-
-          <div class="field">
             <label class="field-label" for="dietary">Dietary Restrictions / Notes</label>
             <textarea id="dietary" name="dietary" placeholder="Allergies, dietary needs, anything we should know (optional)"></textarea>
           </div>
@@ -437,13 +426,9 @@
   var attendNo    = document.getElementById('attendNo');
   var acceptBlock = document.getElementById('acceptBlock');
   var declineBlock= document.getElementById('declineBlock');
-  var guestCount  = document.getElementById('guestCount');
-  var mealList    = document.getElementById('mealList');
   var submitBtn   = document.getElementById('submitBtn');
   var formError   = document.getElementById('formError');
   var thankyou    = document.getElementById('thankyou');
-
-  var MEAL_OPTIONS = ['Chicken', 'Beef', 'Fish', 'Vegetarian'];
 
   function toggleAttendance(){
     var declined = attendNo.checked;
@@ -454,41 +439,6 @@
   }
   attendYes.addEventListener('change', toggleAttendance);
   attendNo.addEventListener('change', toggleAttendance);
-
-  function renderMealFields(){
-    var count = parseInt(guestCount.value, 10);
-    mealList.innerHTML = '';
-    if(!count || count < 1){
-      mealList.innerHTML = '<p class="decline-note" style="margin:0;">Enter the number attending above to choose meals.</p>';
-      return;
-    }
-    count = Math.min(count, 10);
-    for(var i = 1; i <= count; i++){
-      var row = document.createElement('div');
-      row.className = 'meal-row';
-
-      var label = document.createElement('label');
-      label.className = 'field-label';
-      label.setAttribute('for', 'meal' + i);
-      label.textContent = count === 1 ? 'Meal' : 'Guest ' + i + ' Meal';
-
-      var select = document.createElement('select');
-      select.id = 'meal' + i;
-      select.name = 'meal' + i;
-
-      MEAL_OPTIONS.forEach(function(opt){
-        var o = document.createElement('option');
-        o.value = opt;
-        o.textContent = opt;
-        select.appendChild(o);
-      });
-
-      row.appendChild(label);
-      row.appendChild(select);
-      mealList.appendChild(row);
-    }
-  }
-  guestCount.addEventListener('input', renderMealFields);
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
