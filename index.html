@@ -147,6 +147,37 @@
   }
   .nav-links a:hover{opacity:1;}
 
+  .lang-switch{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .lang-btn{
+    background:none;
+    border:none;
+    padding:0;
+    margin:0;
+    font:inherit;
+    font-size:.76rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--plum);
+    opacity:.75;
+    cursor:pointer;
+    transition:opacity .25s ease;
+  }
+  .lang-btn:hover{ opacity:1; }
+  .lang-btn.is-active{
+    opacity:1;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-decoration-color:var(--champagne);
+  }
+  .lang-sep{
+    color:var(--champagne-soft);
+    font-size:.7rem;
+  }
+
   /* ---------- hero ---------- */
   .hero{
     position:relative;
@@ -561,13 +592,18 @@
 <nav class="nav" id="siteNav">
   <svg class="nav-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#seal"/></svg>
   <ul class="nav-links">
-    <li><a href="#story">Story</a></li>
-    <li><a href="#details">Details</a></li>
-    <li><a href="#venue">Venue</a></li>
-    <li><a href="#dress-code">Dress&nbsp;Code</a></li>
-    <li><a href="#registry">Registry</a></li>
-    <li><a href="#food">Food</a></li>
-    <li><a href="#rsvp">RSVP</a></li>
+    <li><a href="#story" data-i18n="nav-story">Story</a></li>
+    <li><a href="#details" data-i18n="nav-details">Details</a></li>
+    <li><a href="#venue" data-i18n="nav-venue">Venue</a></li>
+    <li><a href="#dress-code" data-i18n="nav-dress">Dress&nbsp;Code</a></li>
+    <li><a href="#registry" data-i18n="nav-registry">Registry</a></li>
+    <li><a href="#food" data-i18n="nav-food">Food</a></li>
+    <li><a href="#rsvp" data-i18n="nav-rsvp">RSVP</a></li>
+    <li class="lang-switch" role="group" aria-label="Language selector">
+      <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+    </li>
   </ul>
 </nav>
 
@@ -575,14 +611,14 @@
 <header class="hero">
   <svg class="hero-seal" viewBox="0 0 100 100" aria-hidden="true"><use href="#seal"/></svg>
   <h1 class="hero-names">Nathan &amp; Juriangelis</h1>
-  <p class="hero-tagline">We can't wait to celebrate with you!</p>
-  <p class="hero-meta">January 30, 2027<span class="dot">•</span>Montebello Event Center, San Juan, TX</p>
+  <p class="hero-tagline" data-i18n="hero-tagline">We can't wait to celebrate with you!</p>
+  <p class="hero-meta" data-i18n="hero-meta">January 30, 2027<span class="dot">•</span>Montebello Event Center, San Juan, TX</p>
 
   <div class="countdown" id="countdown" aria-label="Countdown to the wedding">
-    <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">Days</span></div>
-    <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Hours</span></div>
-    <div class="countdown-item"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minutes</span></div>
-    <div class="countdown-item"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Seconds</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label" data-i18n="lbl-days">Days</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label" data-i18n="lbl-hours">Hours</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label" data-i18n="lbl-mins">Minutes</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label" data-i18n="lbl-secs">Seconds</span></div>
   </div>
 
   <span class="scroll-cue" aria-hidden="true"></span>
@@ -592,11 +628,11 @@
 <section class="section" id="story">
   <div class="wrap story reveal">
     <div>
-      <p class="eyebrow">Our Story</p>
-      <h2 class="story-heading">How We Met</h2>
+      <p class="eyebrow" data-i18n="story-eyebrow">Our Story</p>
+      <h2 class="story-heading" data-i18n="story-heading">How We Met</h2>
     </div>
     <div class="story-copy">
-      <p>We met in our Intro to Communications class in college in December 2022. From the moment our eyes met, there was an undeniable connection — we just didn't know yet how important we would become to each other. What started in a college classroom quickly blossomed into something so much more. We've been inseparable ever since, and now we're beyond excited to begin the next chapter of our story and our forever together.</p>
+      <p data-i18n="story-copy">We met in our Intro to Communications class in college in December 2022. From the moment our eyes met, there was an undeniable connection — we just didn't know yet how important we would become to each other. What started in a college classroom quickly blossomed into something so much more. We've been inseparable ever since, and now we're beyond excited to begin the next chapter of our story and our forever together.</p>
     </div>
   </div>
 </section>
@@ -608,10 +644,10 @@
 <!-- ================= WEDDING DETAILS ================= -->
 <section class="section" id="details">
   <div class="wrap center reveal">
-    <p class="eyebrow">Wedding Details</p>
-    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:36px;">Save the Date</h2>
+    <p class="eyebrow" data-i18n="details-eyebrow">Wedding Details</p>
+    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:36px;" data-i18n="details-heading">Save the Date</h2>
     <div class="details-card">
-      <div class="details-date">January 30, 2027</div>
+      <div class="details-date" data-i18n="details-date">January 30, 2027</div>
       <div class="details-venue">Montebello Event Center &nbsp;•&nbsp; San Juan, Texas</div>
     </div>
   </div>
@@ -624,7 +660,7 @@
 <!-- ================= VENUE & DIRECTIONS ================= -->
 <section class="section" id="venue">
   <div class="wrap reveal">
-    <p class="eyebrow center">Venue &amp; Directions</p>
+    <p class="eyebrow center" data-i18n="venue-eyebrow">Venue &amp; Directions</p>
     <h2 class="center" style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:40px;">Montebello Event Center</h2>
     <div class="photo-grid">
       <img src="outside.jpeg" alt="Montebello Event Center, exterior view">
@@ -643,16 +679,16 @@
 
     <div class="venue-info">
       <div>
-        <div class="venue-name">Getting There</div>
+        <div class="venue-name" data-i18n="getting-there">Getting There</div>
         <div class="venue-address">1006 E. Sioux Rd, San Juan, TX</div>
         <a class="btn" href="https://maps.app.goo.gl/ZfWgQBaZayNP7KRP7" target="_blank" rel="noopener">
-          Get Directions
+          <span data-i18n="get-directions">Get Directions</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
         </a>
       </div>
       <div>
-        <div class="venue-name">Parking</div>
-        <p class="venue-note">Complimentary parking is available <strong>on-site</strong> for all guests.</p>
+        <div class="venue-name" data-i18n="parking-label">Parking</div>
+        <p class="venue-note" data-i18n="parking-note">Complimentary parking is available <strong>on-site</strong> for all guests.</p>
       </div>
     </div>
   </div>
@@ -665,16 +701,16 @@
 <!-- ================= DRESS CODE ================= -->
 <section class="section" id="dress-code">
   <div class="wrap center reveal">
-    <p class="eyebrow">Dress Code</p>
-    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:28px;">Pastel Formal Attire</h2>
-    <p class="dress-quote">"We invite our guests to dress in elegant and sophisticated attire with a soft, romantic touch. Ladies are encouraged to wear long or midi dresses in beautiful pastel shades such as blush, lavender, baby blue, sage, or soft pink. Gentlemen are encouraged to wear dress pants with a button-down shirt, blazer, or suit in complementary colors."</p>
+    <p class="eyebrow" data-i18n="dress-eyebrow">Dress Code</p>
+    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:28px;" data-i18n="dress-heading">Pastel Formal Attire</h2>
+    <p class="dress-quote" data-i18n="dress-quote">"We invite our guests to dress in elegant and sophisticated attire with a soft, romantic touch. Ladies are encouraged to wear long or midi dresses in beautiful pastel shades such as blush, lavender, baby blue, sage, or soft pink. Gentlemen are encouraged to wear dress pants with a button-down shirt, blazer, or suit in complementary colors."</p>
 
     <div class="swatches">
-      <div class="swatch"><span class="swatch-dot" style="background:#F0D3D6;"></span><span class="swatch-label">Blush</span></div>
-      <div class="swatch"><span class="swatch-dot" style="background:#DDD0E9;"></span><span class="swatch-label">Lavender</span></div>
-      <div class="swatch"><span class="swatch-dot" style="background:#D3E3ED;"></span><span class="swatch-label">Baby&nbsp;Blue</span></div>
-      <div class="swatch"><span class="swatch-dot" style="background:#C6D3BC;"></span><span class="swatch-label">Sage</span></div>
-      <div class="swatch"><span class="swatch-dot" style="background:#EFC9D2;"></span><span class="swatch-label">Soft&nbsp;Pink</span></div>
+      <div class="swatch"><span class="swatch-dot" style="background:#F0D3D6;"></span><span class="swatch-label" data-i18n="swatch-blush">Blush</span></div>
+      <div class="swatch"><span class="swatch-dot" style="background:#DDD0E9;"></span><span class="swatch-label" data-i18n="swatch-lavender">Lavender</span></div>
+      <div class="swatch"><span class="swatch-dot" style="background:#D3E3ED;"></span><span class="swatch-label" data-i18n="swatch-babyblue">Baby&nbsp;Blue</span></div>
+      <div class="swatch"><span class="swatch-dot" style="background:#C6D3BC;"></span><span class="swatch-label" data-i18n="swatch-sage">Sage</span></div>
+      <div class="swatch"><span class="swatch-dot" style="background:#EFC9D2;"></span><span class="swatch-label" data-i18n="swatch-softpink">Soft&nbsp;Pink</span></div>
     </div>
   </div>
 </section>
@@ -686,13 +722,13 @@
 <!-- ================= REGISTRY ================= -->
 <section class="section" id="registry">
   <div class="wrap center reveal">
-    <p class="eyebrow">Registry</p>
-    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:22px;">With Gratitude</h2>
-    <p class="registry-copy">Your presence on our special day means the world to us, and we are so grateful to have you celebrate with us! If you would like to bless us with a gift, we have provided both a traditional registry and a cash fund, giving you the option to choose whatever feels best for you. Thank you for being part of this special chapter in our lives.</p>
+    <p class="eyebrow" data-i18n="registry-eyebrow">Registry</p>
+    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:22px;" data-i18n="registry-heading">With Gratitude</h2>
+    <p class="registry-copy" data-i18n="registry-copy">Your presence on our special day means the world to us, and we are so grateful to have you celebrate with us! If you would like to bless us with a gift, we have provided both a traditional registry and a cash fund, giving you the option to choose whatever feels best for you. Thank you for being part of this special chapter in our lives.</p>
 
     <div class="btn-row">
-      <a class="btn btn-solid" href="https://www.amazon.com/wedding/guest-view/2AURUF8DX2U6O" target="_blank" rel="registry">Wedding Registry</a>
-      <a class="btn btn-solid" href="https://cash.app/$ju2040" target="_blank" rel="noopener">Newlywed Fund</a>
+      <a class="btn btn-solid" href="https://www.amazon.com/wedding/guest-view/2AURUF8DX2U6O" target="_blank" rel="registry" data-i18n="btn-registry">Wedding Registry</a>
+      <a class="btn btn-solid" href="https://cash.app/$ju2040" target="_blank" rel="noopener" data-i18n="btn-cash">Newlywed Fund</a>
     </div>
   </div>
 </section>
@@ -704,26 +740,26 @@
 <!-- ================= FOOD & DRINKS ================= -->
 <section class="section" id="food">
   <div class="wrap center reveal">
-    <p class="eyebrow">Food &amp; Drinks</p>
-    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:22px;">An Evening To Savor</h2>
-    <p class="food-copy">Guests will enjoy a two-course meal, a selection of alcoholic and non-alcoholic beverages, and a dessert table featuring plenty of sweet treats to choose from. To top it all off, a coffee cart will be available for guests to enjoy throughout the celebration.</p>
+    <p class="eyebrow" data-i18n="food-eyebrow">Food &amp; Drinks</p>
+    <h2 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:22px;" data-i18n="food-heading">An Evening To Savor</h2>
+    <p class="food-copy" data-i18n="food-copy">Guests will enjoy a two-course meal, a selection of alcoholic and non-alcoholic beverages, and a dessert table featuring plenty of sweet treats to choose from. To top it all off, a coffee cart will be available for guests to enjoy throughout the celebration.</p>
 
     <div class="food-icons">
       <div class="food-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 2v8a2 2 0 002 2v10M7 2v8M11 2v8M15 2c-1.5 2-1.5 8 0 10v10"/></svg>
-        <span>Two-Course Meal</span>
+        <span data-i18n="food-meal">Two-Course Meal</span>
       </div>
       <div class="food-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 3h12l-1.5 9a4.5 4.5 0 01-9 0L6 3z"/><path d="M12 15v6M9 21h6"/></svg>
-        <span>Full Bar</span>
+        <span data-i18n="food-bar">Full Bar</span>
       </div>
       <div class="food-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 21h16M6 21V9a6 6 0 0112 0v12"/><path d="M9 6c.5-1 1.5-1 2-2"/></svg>
-        <span>Dessert Table</span>
+        <span data-i18n="food-dessert">Dessert Table</span>
       </div>
       <div class="food-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8h13v5a5 5 0 01-5 5H8a5 5 0 01-5-5V8z"/><path d="M16 9h2a2.5 2.5 0 010 5h-2M6 3c0 1-1 1-1 2M10 3c0 1-1 1-1 2"/></svg>
-        <span>Coffee Cart</span>
+        <span data-i18n="food-coffee">Coffee Cart</span>
       </div>
     </div>
   </div>
@@ -733,16 +769,16 @@
 <section class="section rsvp-section" id="rsvp">
   <div class="wrap reveal">
     <p class="eyebrow">RSVP</p>
-    <h2 class="rsvp-heading">Join The Celebration</h2>
-    <p class="rsvp-copy">Please let us know if you'll be joining us, and don't forget to leave us a song request to keep the dance floor going all night long.</p>
-    <a class="btn btn-solid" href="RSVP.html">RSVP Now</a>
+    <h2 class="rsvp-heading" data-i18n="rsvp-heading">Join The Celebration</h2>
+    <p class="rsvp-copy" data-i18n="rsvp-copy">Please let us know if you'll be joining us, and don't forget to leave us a song request to keep the dance floor going all night long.</p>
+    <a class="btn btn-solid" href="RSVP.html" data-i18n="btn-rsvp">RSVP Now</a>
   </div>
 </section>
 
 <footer>
   <svg class="foot-seal" viewBox="0 0 100 100" aria-hidden="true"><use href="#seal"/></svg>
   <div class="foot-names">Nathan &amp; Juriangelis</div>
-  <div class="foot-meta">January 30, 2027 &nbsp;•&nbsp; Montebello Event Center &nbsp;•&nbsp; San Juan, TX</div>
+  <div class="foot-meta" data-i18n="foot-meta">January 30, 2027 &nbsp;•&nbsp; Montebello Event Center &nbsp;•&nbsp; San Juan, TX</div>
 </footer>
 
 <script>
@@ -791,6 +827,133 @@
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
+</script>
+
+<script>
+  // ---- language toggle (English / Spanish) ----
+  const translations = {
+    en: {
+      'nav-story': 'Story',
+      'nav-details': 'Details',
+      'nav-venue': 'Venue',
+      'nav-dress': 'Dress&nbsp;Code',
+      'nav-registry': 'Registry',
+      'nav-food': 'Food',
+      'nav-rsvp': 'RSVP',
+      'hero-tagline': "We can't wait to celebrate with you!",
+      'hero-meta': 'January 30, 2027<span class="dot">•</span>Montebello Event Center, San Juan, TX',
+      'lbl-days': 'Days',
+      'lbl-hours': 'Hours',
+      'lbl-mins': 'Minutes',
+      'lbl-secs': 'Seconds',
+      'story-eyebrow': 'Our Story',
+      'story-heading': 'How We Met',
+      'story-copy': "We met in our Intro to Communications class in college in December 2022. From the moment our eyes met, there was an undeniable connection — we just didn't know yet how important we would become to each other. What started in a college classroom quickly blossomed into something so much more. We've been inseparable ever since, and now we're beyond excited to begin the next chapter of our story and our forever together.",
+      'details-eyebrow': 'Wedding Details',
+      'details-heading': 'Save the Date',
+      'details-date': 'January 30, 2027',
+      'venue-eyebrow': 'Venue &amp; Directions',
+      'getting-there': 'Getting There',
+      'get-directions': 'Get Directions',
+      'parking-label': 'Parking',
+      'parking-note': 'Complimentary parking is available <strong>on-site</strong> for all guests.',
+      'dress-eyebrow': 'Dress Code',
+      'dress-heading': 'Pastel Formal Attire',
+      'dress-quote': '"We invite our guests to dress in elegant and sophisticated attire with a soft, romantic touch. Ladies are encouraged to wear long or midi dresses in beautiful pastel shades such as blush, lavender, baby blue, sage, or soft pink. Gentlemen are encouraged to wear dress pants with a button-down shirt, blazer, or suit in complementary colors."',
+      'swatch-blush': 'Blush',
+      'swatch-lavender': 'Lavender',
+      'swatch-babyblue': 'Baby&nbsp;Blue',
+      'swatch-sage': 'Sage',
+      'swatch-softpink': 'Soft&nbsp;Pink',
+      'registry-eyebrow': 'Registry',
+      'registry-heading': 'With Gratitude',
+      'registry-copy': 'Your presence on our special day means the world to us, and we are so grateful to have you celebrate with us! If you would like to bless us with a gift, we have provided both a traditional registry and a cash fund, giving you the option to choose whatever feels best for you. Thank you for being part of this special chapter in our lives.',
+      'btn-registry': 'Wedding Registry',
+      'btn-cash': 'Newlywed Fund',
+      'food-eyebrow': 'Food &amp; Drinks',
+      'food-heading': 'An Evening To Savor',
+      'food-copy': 'Guests will enjoy a two-course meal, a selection of alcoholic and non-alcoholic beverages, and a dessert table featuring plenty of sweet treats to choose from. To top it all off, a coffee cart will be available for guests to enjoy throughout the celebration.',
+      'food-meal': 'Two-Course Meal',
+      'food-bar': 'Full Bar',
+      'food-dessert': 'Dessert Table',
+      'food-coffee': 'Coffee Cart',
+      'rsvp-heading': 'Join The Celebration',
+      'rsvp-copy': "Please let us know if you'll be joining us, and don't forget to leave us a song request to keep the dance floor going all night long.",
+      'btn-rsvp': 'RSVP Now',
+      'foot-meta': 'January 30, 2027 &nbsp;•&nbsp; Montebello Event Center &nbsp;•&nbsp; San Juan, TX'
+    },
+    es: {
+      'nav-story': 'Historia',
+      'nav-details': 'Detalles',
+      'nav-venue': 'Lugar',
+      'nav-dress': 'Código&nbsp;de&nbsp;Vestir',
+      'nav-registry': 'Regalos',
+      'nav-food': 'Comida',
+      'nav-rsvp': 'RSVP',
+      'hero-tagline': '¡No podemos esperar a celebrar contigo!',
+      'hero-meta': '30 de enero de 2027<span class="dot">•</span>Montebello Event Center, San Juan, TX',
+      'lbl-days': 'Días',
+      'lbl-hours': 'Horas',
+      'lbl-mins': 'Minutos',
+      'lbl-secs': 'Segundos',
+      'story-eyebrow': 'Nuestra Historia',
+      'story-heading': 'Cómo Nos Conocimos',
+      'story-copy': 'Nos conocimos en nuestra clase de Introducción a la Comunicación en la universidad, en diciembre de 2022. Desde el momento en que nuestras miradas se cruzaron, hubo una conexión innegable — aunque todavía no sabíamos lo importantes que llegaríamos a ser el uno para el otro. Lo que comenzó en un salón de clases universitario pronto se convirtió en algo mucho más grande. Desde entonces hemos sido inseparables, y ahora estamos más que emocionados de comenzar el siguiente capítulo de nuestra historia y nuestro para siempre juntos.',
+      'details-eyebrow': 'Detalles de la Boda',
+      'details-heading': 'Guarda la Fecha',
+      'details-date': '30 de enero de 2027',
+      'venue-eyebrow': 'Lugar y Direcciones',
+      'getting-there': 'Cómo Llegar',
+      'get-directions': 'Obtener Direcciones',
+      'parking-label': 'Estacionamiento',
+      'parking-note': 'Hay estacionamiento gratuito disponible <strong>en el lugar</strong> para todos los invitados.',
+      'dress-eyebrow': 'Código de Vestimenta',
+      'dress-heading': 'Atuendo Formal en Tonos Pastel',
+      'dress-quote': '"Invitamos a nuestros invitados a vestir de manera elegante y sofisticada, con un toque suave y romántico. Se invita a las damas a usar vestidos largos o midi en hermosos tonos pastel como rosa palo, lavanda, azul cielo, verde salvia o rosa suave. Se invita a los caballeros a usar pantalón de vestir con camisa, blazer o traje en colores complementarios."',
+      'swatch-blush': 'Rosa&nbsp;Palo',
+      'swatch-lavender': 'Lavanda',
+      'swatch-babyblue': 'Azul&nbsp;Cielo',
+      'swatch-sage': 'Verde&nbsp;Salvia',
+      'swatch-softpink': 'Rosa&nbsp;Suave',
+      'registry-eyebrow': 'Regalos',
+      'registry-heading': 'Con Gratitud',
+      'registry-copy': 'Tu presencia en nuestro día especial lo significa todo para nosotros, y estamos muy agradecidos de que nos acompañes a celebrar. Si deseas bendecirnos con un regalo, hemos preparado tanto una lista de bodas tradicional como un fondo en efectivo, para que elijas la opción que mejor te parezca. Gracias por ser parte de este capítulo tan especial en nuestras vidas.',
+      'btn-registry': 'Lista de Bodas',
+      'btn-cash': 'Regalo en Efectivo',
+      'food-eyebrow': 'Comida y Bebidas',
+      'food-heading': 'Una Noche para Disfrutar',
+      'food-copy': 'Los invitados disfrutarán de una cena de dos tiempos, una selección de bebidas alcohólicas y sin alcohol, y una mesa de postres con muchos dulces para elegir. Para completar la noche, habrá un carrito de café disponible durante toda la celebración.',
+      'food-meal': 'Cena de Dos Tiempos',
+      'food-bar': 'Barra Libre',
+      'food-dessert': 'Mesa de Postres',
+      'food-coffee': 'Carrito de Café',
+      'rsvp-heading': 'Únete a la Celebración',
+      'rsvp-copy': 'Por favor, avísanos si nos acompañarás, y no olvides dejarnos una canción para mantener la pista de baile activa toda la noche.',
+      'btn-rsvp': 'Confirmar Ahora',
+      'foot-meta': '30 de enero de 2027 &nbsp;•&nbsp; Montebello Event Center &nbsp;•&nbsp; San Juan, TX'
+    }
+  };
+
+  function setLanguage(lang){
+    const dict = translations[lang];
+    if (!dict) return;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      const active = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+  });
 </script>
 
 </body>
