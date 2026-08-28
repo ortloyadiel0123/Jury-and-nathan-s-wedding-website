@@ -362,9 +362,7 @@
 
       <div class="rule"></div>
 
-      <form id="rsvpForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <!-- EDIT: replace the action URL above with your own form endpoint
-             (e.g. a free Formspree form) so replies reach your inbox. -->
+      <form id="rsvpForm">
 
         <div class="field">
           <label class="field-label" for="fullName">Full Name(s)</label>
@@ -419,6 +417,10 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("oOGy9vDiBbH8QD1uD");
+</script>
 <script>
 (function(){
   var form        = document.getElementById('rsvpForm');
@@ -455,30 +457,22 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
-    var endpoint = form.getAttribute('action');
-    var isConfigured = endpoint && endpoint.indexOf('YOUR_FORM_ID') === -1;
-
     function showThankYou(){
       form.classList.add('hide');
       thankyou.classList.add('show');
     }
 
-    if(isConfigured){
-      fetch(endpoint, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(function(){
+    emailjs.sendForm('service_fezwn37', 'template_6tmahi4', form)
+      .then(function(){
         showThankYou();
-      }).catch(function(){
-        // Still confirm to the guest even if the network call fails,
-        // so a flaky connection doesn't block a heartfelt RSVP.
-        showThankYou();
+      })
+      .catch(function(err){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send RSVP';
+        formError.textContent = "Something went wrong sending your RSVP. Please try again, or reach out to us directly.";
+        formError.classList.add('show');
+        console.error('EmailJS error:', err);
       });
-    } else {
-      // No backend configured yet — see the EDIT comment near the <form> tag.
-      showThankYou();
-    }
   });
 })();
 </script>
