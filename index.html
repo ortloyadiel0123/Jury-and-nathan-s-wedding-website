@@ -883,6 +883,11 @@
         </div>
 
         <div class="rsvp-field">
+          <label class="rsvp-label" for="rsvpEmail" data-i18n="rsvp-email-label">Email</label>
+          <input type="email" id="rsvpEmail" name="email" data-i18n-placeholder="rsvp-email-placeholder" placeholder="So we can send you a confirmation" required>
+        </div>
+
+        <div class="rsvp-field">
           <span class="rsvp-label" id="rsvpAttendingLabel" data-i18n="rsvp-attending-question">Will you be joining us?</span>
           <div class="rsvp-toggle" role="radiogroup" aria-labelledby="rsvpAttendingLabel">
             <input type="radio" id="rsvpYes" name="attending" value="yes" required>
@@ -1032,6 +1037,8 @@
       'rsvp-copy': "Please let us know if you'll be joining us, and don't forget to leave us a song request to keep the dance floor going all night long.",
       'rsvp-name-label': 'Full Name(s)',
       'rsvp-name-placeholder': "As you'd like it on the guest list",
+      'rsvp-email-label': 'Email',
+      'rsvp-email-placeholder': 'So we can send you a confirmation',
       'rsvp-attending-question': 'Will you be joining us?',
       'rsvp-yes': 'Joyfully Accepts',
       'rsvp-no': 'Regretfully Declines',
@@ -1044,7 +1051,7 @@
       'rsvp-declinenote-label': 'Leave a note (optional)',
       'rsvp-declinenote-placeholder': "We'll miss you — feel free to leave a message",
       'rsvp-submit': 'Send RSVP',
-      'rsvp-error': "Please fill in your name and let us know if you'll be attending.",
+      'rsvp-error': "Please fill in your name, email, and let us know if you'll be attending.",
       'rsvp-thankyou-heading': 'Thank You',
       'rsvp-thankyou-copy': "Your RSVP has been received with love. We can't wait to celebrate with you!",
       'foot-meta': 'January 30, 2027 &nbsp;•&nbsp; Montebello Event Center &nbsp;•&nbsp; San Juan, TX'
@@ -1098,6 +1105,8 @@
       'rsvp-copy': 'Por favor, avísanos si nos acompañarás, y no olvides dejarnos una canción para mantener la pista de baile activa toda la noche.',
       'rsvp-name-label': 'Nombre(s) Completo(s)',
       'rsvp-name-placeholder': 'Como te gustaría que aparezca en la lista de invitados',
+      'rsvp-email-label': 'Correo Electrónico',
+      'rsvp-email-placeholder': 'Para poder enviarte una confirmación',
       'rsvp-attending-question': '¿Nos acompañarás?',
       'rsvp-yes': 'Acepta con Alegría',
       'rsvp-no': 'Declina con Pesar',
@@ -1110,7 +1119,7 @@
       'rsvp-declinenote-label': 'Deja una nota (opcional)',
       'rsvp-declinenote-placeholder': 'Te extrañaremos — siéntete libre de dejarnos un mensaje',
       'rsvp-submit': 'Enviar RSVP',
-      'rsvp-error': 'Por favor, completa tu nombre y dinos si podrás asistir.',
+      'rsvp-error': 'Por favor, completa tu nombre, correo electrónico, y dinos si podrás asistir.',
       'rsvp-thankyou-heading': 'Gracias',
       'rsvp-thankyou-copy': 'Tu confirmación ha sido recibida con cariño. ¡No podemos esperar a celebrar contigo!',
       'foot-meta': '30 de enero de 2027 &nbsp;•&nbsp; Montebello Event Center &nbsp;•&nbsp; San Juan, TX'
@@ -1175,9 +1184,10 @@
     formError.classList.remove('show');
 
     var name = document.getElementById('rsvpName').value.trim();
+    var email = document.getElementById('rsvpEmail').value.trim();
     var attending = form.querySelector('input[name="attending"]:checked');
 
-    if(!name || !attending){
+    if(!name || !email || !attending){
       formError.classList.add('show');
       return;
     }
@@ -1188,6 +1198,14 @@
 
     emailjs.sendForm('service_fezwn37', 'template_6tmahi4', form)
       .then(function(){
+        // Notification to the couple is the critical path — once that's
+        // confirmed, fire off a best-effort confirmation to the guest.
+        // A failure here shouldn't block the guest from seeing "Thank You",
+        // since their RSVP has already been recorded either way.
+        emailjs.sendForm('service_fezwn37', 'template_i8y6alj', form)
+          .catch(function(err){
+            console.error('Guest confirmation email failed:', err);
+          });
         form.classList.add('rsvp-hide');
         thankyou.classList.add('show');
       })
