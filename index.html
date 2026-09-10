@@ -314,7 +314,16 @@
   .story-copy p{
     font-size:1.05rem;
     color:var(--ink);
-    margin:0;
+    margin:0 0 14px;
+  }
+  .story-copy p:last-child{ margin-bottom:0; }
+  .story-person + .story-person{ margin-top:32px; }
+  .story-person-name{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--plum);
+    margin:0 0 10px;
   }
 
   /* ---------- details ---------- */
@@ -733,20 +742,28 @@
       <h2 class="story-heading" data-i18n="story-heading">How We Met</h2>
     </div>
     <div class="story-copy">
-      <p data-i18n="story-copy">Juri's perspective: We had one class together during the Fall of 2022, but somehow, we went the entire semester without ever speaking or really noticing each other. It wasn’t until the very last day of class that our paths finally crossed.
-That day, we had to present our final project. When it was Nathan’s turn,and he was up there, he realized he had forgotten his password and couldn’t log in. As he struggled to recover his account and kept running into login errors, he looked up, seemingly lost and confused. We made eye contact for the very first time. We both smiled softly at each other. That was the moment that started it all.
-I offered to present first while he worked on getting his account and presentation ready. 
-As I presented, he stared at me the entire time.  When I finished, it was his turn, and I stared at him back with the same intensity. Once it was time to leave, he gathered his things quickly and rushed out of the classroom. I panicked and thought I would never see him again, so I rushed and followed, hoping he was waiting for me. 
-And he was. From there, the rest is history. 
-It’s still crazy to think that we spent an entire semester in the same classroom, never knowing that the person we were meant to find was sitting right there, until the very last day brought us together.</p>
-<p data-i18n="story-copy">Nathan's perspective: We had a class together in the Fall of 2022. There was a girl in the class who had caught my attention, not only because of her style, but because of the way she carried herself. She always seemed to know the answer, was kind and helpful to others, and simply had a good character. I thought nothing of it at the time.
-It wasn’t until the last day of class that I finally spoke to her. We were getting ready to present our final projects when I forgot my password and started getting nervous as I struggled to log in. At that point, I had pretty much accepted my fate. I looked up, and that’s when our eyes locked.
-She smiled, almost as if she was laughing at the situation, and offered to go in my place while I fixed the problem. After everything was sorted out and I finished presenting, I left the classroom because I was extremely hungry.
-When I walked out, I decided to wait for her. I figured that if she came after me, I would take the opportunity to get to know her. If she didn’t, then she would simply remain another person in the world.
-But she came running out of the classroom looking for me.
-From that moment, a friendship began, and that friendship eventually grew into the love we share today. What started with one class, a forgotten password, and a chance encounter became a lovely couple now waiting to be married.
-
-</p>
+      <div class="story-person">
+        <p class="story-person-name">Nathan</p>
+        <div data-i18n="story-copy-nathan">
+          <p>We had a class together in the Fall of 2022. There was a girl in the class who had caught my attention, not only because of her style, but because of the way she carried herself. She always seemed to know the answer, was kind and helpful to others, and simply had a good character. I thought nothing of it at the time.</p>
+          <p>It wasn't until the last day of class that I finally spoke to her. We were getting ready to present our final projects when I forgot my password and started getting nervous as I struggled to log in. At that point, I had pretty much accepted my fate. I looked up, and that's when our eyes locked.</p>
+          <p>She smiled, almost as if she was laughing at the situation, and offered to go in my place while I fixed the problem. After everything was sorted out and I finished presenting, I left the classroom because I was extremely hungry.</p>
+          <p>When I walked out, I decided to wait for her. I figured that if she came after me, I would take the opportunity to get to know her. If she didn't, then she would simply remain another person in the world.</p>
+          <p>But she came running out of the classroom looking for me.</p>
+          <p>From that moment, a friendship began, and that friendship eventually grew into the love we share today. What started with one class, a forgotten password, and a chance encounter became a lovely couple now waiting to be married.</p>
+        </div>
+      </div>
+      <div class="story-person">
+        <p class="story-person-name">Juriangelis</p>
+        <div data-i18n="story-copy-juri">
+          <p>We had one class together during the Fall of 2022, but somehow, we went the entire semester without ever speaking or really noticing each other. It wasn't until the very last day of class that our paths finally crossed.</p>
+          <p>That day, we had to present our final project. When it was Nathan's turn, and he was up there, he realized he had forgotten his password and couldn't log in. As he struggled to recover his account and kept running into login errors, he looked up, seemingly lost and confused. We made eye contact for the very first time. We both smiled softly at each other. That was the moment that started it all.</p>
+          <p>I offered to present first while he worked on getting his account and presentation ready.</p>
+          <p>As I presented, he stared at me the entire time. When I finished, it was his turn, and I stared at him back with the same intensity. Once it was time to leave, he gathered his things quickly and rushed out of the classroom. I panicked and thought I would never see him again, so I rushed and followed, hoping he was waiting for me.</p>
+          <p>And he was. From there, the rest is history.</p>
+          <p>It's still crazy to think that we spent an entire semester in the same classroom, never knowing that the person we were meant to find was sitting right there, until the very last day brought us together.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1016,7 +1033,8 @@ From that moment, a friendship began, and that friendship eventually grew into t
       'lbl-secs': 'Seconds',
       'story-eyebrow': 'Our Story',
       'story-heading': 'How We Met',
-      'story-copy': "We met in our Intro to Communications class in college in December 2022. From the moment our eyes met, there was an undeniable connection — we just didn't know yet how important we would become to each other. What started in a college classroom quickly blossomed into something so much more. We've been inseparable ever since, and now we're beyond excited to begin the next chapter of our story and our forever together.",
+      'story-copy-nathan': "<p>We had a class together in the Fall of 2022. There was a girl in the class who had caught my attention, not only because of her style, but because of the way she carried herself. She always seemed to know the answer, was kind and helpful to others, and simply had a good character. I thought nothing of it at the time.</p><p>It wasn't until the last day of class that I finally spoke to her. We were getting ready to present our final projects when I forgot my password and started getting nervous as I struggled to log in. At that point, I had pretty much accepted my fate. I looked up, and that's when our eyes locked.</p><p>She smiled, almost as if she was laughing at the situation, and offered to go in my place while I fixed the problem. After everything was sorted out and I finished presenting, I left the classroom because I was extremely hungry.</p><p>When I walked out, I decided to wait for her. I figured that if she came after me, I would take the opportunity to get to know her. If she didn't, then she would simply remain another person in the world.</p><p>But she came running out of the classroom looking for me.</p><p>From that moment, a friendship began, and that friendship eventually grew into the love we share today. What started with one class, a forgotten password, and a chance encounter became a lovely couple now waiting to be married.</p>",
+      'story-copy-juri': "<p>We had one class together during the Fall of 2022, but somehow, we went the entire semester without ever speaking or really noticing each other. It wasn't until the very last day of class that our paths finally crossed.</p><p>That day, we had to present our final project. When it was Nathan's turn, and he was up there, he realized he had forgotten his password and couldn't log in. As he struggled to recover his account and kept running into login errors, he looked up, seemingly lost and confused. We made eye contact for the very first time. We both smiled softly at each other. That was the moment that started it all.</p><p>I offered to present first while he worked on getting his account and presentation ready.</p><p>As I presented, he stared at me the entire time. When I finished, it was his turn, and I stared at him back with the same intensity. Once it was time to leave, he gathered his things quickly and rushed out of the classroom. I panicked and thought I would never see him again, so I rushed and followed, hoping he was waiting for me.</p><p>And he was. From there, the rest is history.</p><p>It's still crazy to think that we spent an entire semester in the same classroom, never knowing that the person we were meant to find was sitting right there, until the very last day brought us together.</p>",
       'details-eyebrow': 'Wedding Details',
       'details-heading': 'Save the Date',
       'details-date': 'January 30, 2027',
@@ -1084,7 +1102,8 @@ From that moment, a friendship began, and that friendship eventually grew into t
       'lbl-secs': 'Segundos',
       'story-eyebrow': 'Nuestra Historia',
       'story-heading': 'Cómo Nos Conocimos',
-      'story-copy': 'Nos conocimos en nuestra clase de Introducción a la Comunicación en la universidad, en diciembre de 2022. Desde el momento en que nuestras miradas se cruzaron, hubo una conexión innegable — aunque todavía no sabíamos lo importantes que llegaríamos a ser el uno para el otro. Lo que comenzó en un salón de clases universitario pronto se convirtió en algo mucho más grande. Desde entonces hemos sido inseparables, y ahora estamos más que emocionados de comenzar el siguiente capítulo de nuestra historia y nuestro para siempre juntos.',
+      'story-copy-nathan': "<p>Tuvimos una clase juntos en el otoño de 2022. Había una chica en la clase que había llamado mi atención, no solo por su estilo, sino por la forma en que se conducía. Ella siempre parecía saber la respuesta, era amable y servicial con los demás, y simplemente tenía un buen carácter. En ese momento no le di mayor importancia.</p><p>No fue hasta el último día de clase que finalmente le hablé. Nos estábamos preparando para presentar nuestros proyectos finales cuando olvidé mi contraseña y empecé a ponerme nervioso mientras luchaba por iniciar sesión. En ese punto, ya había aceptado mi destino. Levanté la vista, y fue entonces cuando nuestras miradas se cruzaron.</p><p>Ella sonrió, casi como si se estuviera riendo de la situación, y se ofreció a presentar en mi lugar mientras yo arreglaba el problema. Después de que todo se solucionó y terminé de presentar, salí del salón porque tenía muchísima hambre.</p><p>Cuando salí, decidí esperarla. Pensé que si ella salía a buscarme, aprovecharía la oportunidad para conocerla. Si no lo hacía, simplemente seguiría siendo otra persona más en el mundo.</p><p>Pero ella salió corriendo del salón, buscándome.</p><p>Desde ese momento, comenzó una amistad, y esa amistad eventualmente se convirtió en el amor que compartimos hoy. Lo que comenzó con una clase, una contraseña olvidada y un encuentro casual, se convirtió en una hermosa pareja que ahora espera casarse.</p>",
+      'story-copy-juri': "<p>Tuvimos una clase juntos durante el otoño de 2022, pero de alguna manera, pasamos todo el semestre sin hablarnos ni realmente notarnos el uno al otro. No fue hasta el último día de clase que nuestros caminos finalmente se cruzaron.</p><p>Ese día teníamos que presentar nuestro proyecto final. Cuando le tocó el turno a Nathan, y él estaba ahí al frente, se dio cuenta de que había olvidado su contraseña y no podía iniciar sesión. Mientras luchaba por recuperar su cuenta y seguía encontrando errores al iniciar sesión, levantó la vista, con una expresión de estar perdido y confundido. Hicimos contacto visual por primera vez. Ambos nos sonreímos suavemente. Ese fue el momento que lo comenzó todo.</p><p>Me ofrecí a presentar primero mientras él terminaba de preparar su cuenta y su presentación.</p><p>Mientras yo presentaba, él me miró todo el tiempo. Cuando terminé, fue su turno, y yo lo miré de vuelta con la misma intensidad. Cuando llegó el momento de irnos, él recogió sus cosas rápidamente y salió corriendo del salón. Me entró pánico y pensé que nunca más lo volvería a ver, así que corrí y lo seguí, esperando que me estuviera esperando.</p><p>Y ahí estaba. De ahí en adelante, el resto es historia.</p><p>Todavía parece increíble pensar que pasamos un semestre entero en el mismo salón de clases, sin saber que la persona que estábamos destinados a encontrar estaba sentada justo ahí, hasta que el último día finalmente nos unió.</p>",
       'details-eyebrow': 'Detalles de la Boda',
       'details-heading': 'Guarda la Fecha',
       'details-date': '30 de enero de 2027',
